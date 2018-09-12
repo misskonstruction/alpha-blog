@@ -10,7 +10,7 @@ class Article extends React.Component {
           <a href={this.props.path}>{this.props.title}</a>
         </div>
         <div className="article-body">
-        {this.props.description}
+          {this.props.description}
         <div className="article-meta-details">
             <small>
               Created by: {this.props.author},
@@ -22,6 +22,16 @@ class Article extends React.Component {
         </div>
       </React.Fragment>
     );
+  }
+  componentDidMount(){
+    var self = this;
+  setInterval(function() {self.forceUpdate()}, 5000);
+  }
+  componentWillUnmount(){
+    if (this._timer){
+      clearInterval(this._timer);
+      this._timer = null;
+    }
   }
 }
 
